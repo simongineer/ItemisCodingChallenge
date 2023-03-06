@@ -1,0 +1,30 @@
+#########################################################
+The real challenge for me
+#########################################################
+//test driven development
+
+
+#########################################################
+What I understood
+#########################################################
+The user inputs multiple talks for one daywith each having a length of different minutes or 'lightning' which represents 5 mins. We've two time windows (sessions) available for each day, where those talks can be alined after each other. They can't be seperated interrupted and continued afterwads. The earliest start time is at 9 AM until lunch which takes place at 12 PM. After this one hour break talks keep going. The last event which should not start before 4 PM and not after 5 PM is the 'Networking Event' which lasts one hour.
+
+#########################################################
+How I am planning to implement it
+#########################################################
+Since there are two sessions (morning- & afternoon) being available to fill in the individual conference talks into, I will let the user input each talk with its time. After that I will check that each talk can fit as whole in one of the time windows. The maximum talk length can't be longer than the longest available session (which is the afternoon session with max. 240min).
+I will just skip any talk whichs specified time length is greater 240.
+
+I will subtract the sum of individual talks with all kind of different combinations, until all fit within those specified time window. I will not consider any efficiency. For example: If there is one talk which doesn't fit ino the first session anymore, I am going to let it take place within the second time window, even if there is another talk which doesn't take that long and may be more efficient to take place within the second time wndow.
+
+There is another scenario I need to be aware of:
+After the user specified various talks with different length and I 
+
+I just noticed something: Within the '###Test output' section on '#Track 2' the Networking Event starts at 05:00 PM even though that 'Rails for Python Developers' is marked as lightning at 04:00 PM and just takes 5mins. This means, that the sample programm was written to 'hard code' the Networking Event of each day to take place at always 05:00 PM. This makes sense, since it is important that it needs to take place within 04:00 PM & 05:00 PM. Yet it's not efficient to let people wait about 55mins for that last event, I ma copy this approach to stay on the save side. There is then a lower risk to let the Networking Event cut into 
+
+#########################################################
+Non essential features, which makes life easier
+#########################################################
+I will implement two commands for the user when inserting the conference talks:
+1. 'list' which will print out a list of already entered talks and its times + current sum
+2. 'end' which will finish the input process and starts calculating the talks within the specified time windows
